@@ -1,0 +1,8 @@
+#!/bin/bash
+IP=10.2.255.254
+COUNT=30
+for myHost in $IP
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+echo "($myHost $COUNT) $msg"
+done

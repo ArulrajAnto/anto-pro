@@ -1,0 +1,45 @@
+rsync -aix /source remote:/dest | pv -les $(df -i /source | perl -ane 'print $F[2] if $F[5] =~ m:^/:') >/dev/null
+
+
+
+
+# rsync -aix test.tar.gz root@10.1.10.154:/tmp | pv -les $(df -i /source | perl -ane 'print $F[2] if $F[5] =~ m:^/:')
+
+df: `/source': No such file or directory
+df: no file systems processed
+-bash: pv: command not found
+
+
+
+rsync -aix test.tar.gz root@10.1.10.154:/tmp | pv -les $( perl -ane 'print $F[2] if $F[5] =~ m:^/:')
+
+rsync -aix  test.tar.gz root@10.1.10.154:/tmp 
+
+
+
+1027  rsync -z test.tar.gz root@10.1.10.154:/tmp
+ 1028  rsync -Pz test.tar.gz root@10.1.10.154:/tmp
+ 1029  rsync -Pz test.tar.gz root@10.1.10.154:/tmp | grep "bytes/sec"
+ 1030  rsync -Pz test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec"
+ 1031  rsync -Pz test.tar.gz root@10.1.10.118:/tmp
+ 1032  rsync -Pz test.tar.gz root@10.1.10.118:/tmp | awk '{print $3}'
+ 1033  rsync -Pz test.tar.gz root@10.1.10.118:/tmp | sed -n 's@^\(\([^/][^/]*/\)\{0,2\}\).*@\1@p'
+ 1034  rsync -Pz test.tar.gz root@10.1.10.118:/tmp | sed -n 's@^\(\([^/][^/]*/\)\{0,2\}\).*@\1@p' |grep MB/s
+ 1035  rsync -Pz test.tar.gz root@10.1.10.118:/tmp | sed -n 's@^\(\([^/][^/]*/\)\{0,2\}\).*@\1@p' | grep "MB/s"
+ 1036  rsync -Pz test.tar.gz root@10.1.10.118:/tmp |  grep "MB/s"
+ 1037  rsync -Pz test.tar.gz root@10.1.10.118:/tmp |  grep "MB/s" | awk '{print $2}'
+
+
+1041  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec"
+ 1042  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" |grep &2
+ 1043  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d "%" -f1
+ 1044  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 6 | cut -d "%" -f1
+ 1045  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 5 | cut -d "%" -f1
+ 1046  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 8 | cut -d "%" -f1
+ 1047  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 7 | cut -d "%" -f1
+ 1048  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1
+ 1049  rsync -Pv  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1
+
+
+
+rsync -Pv  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 |  cut -d "%" -f1

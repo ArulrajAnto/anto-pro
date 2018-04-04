@@ -1,0 +1,9 @@
+#!/bin/sh
+cp /home/arulraj.anto/test.tar.gz /home/arulraj.anto/Desktop/scripts/
+ldconfig
+
+echo "Done!"
+
+
+
+rsync --remove-source-files -zvh /home/arulraj.anto/test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1 -- delete the source file

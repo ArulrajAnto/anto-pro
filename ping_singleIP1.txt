@@ -1,0 +1,19 @@
+#!/bin/bash
+IP=10.2.255.254
+COUNT=30
+for myHost in $IP
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+  ssg=$(ping -q -n -c 5 10.2.10.14 | grep "time" | cut -d " " -f 10 | cut -d "%" -f1)
+#echo "($myHost $COUNT) $msg"
+if [ $msg -eq 0 ]; then
+    echo "node $IP is up" 
+    else
+    echo "node $IP is down"
+    fi
+if [ $ssg != 0 ]; then
+    echo "node $IP is on" 
+    else
+    echo "node $IP is off"
+    fi
+done

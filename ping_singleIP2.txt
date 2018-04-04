@@ -1,0 +1,25 @@
+#!/bin/bash
+#IP=( "peregrine.gai.net" "alps.gai.net" "swift.gai.net" "don.gai.net" "10.1.2.1" )
+IP=( "10.2.255.254" "10.1.255.254" "swift.gai.net" "10.2.10.4" "10.1.2.1" )
+params=(PARAM1 PARAM2 PARAM3 PARAM4)
+COUNT=30
+n=0
+for myHost in "${IP[@]}"
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+  ssg=$(ping -q -n -c $COUNT $myHost | grep "time" | cut -d " " -f 10 | cut -d "%" -f1)
+#echo "($myHost $COUNT) $msg"
+if [ $? -eq 0 ]; then
+    echo "node ${params[$n]} is up ( "$msg" )"
+    else
+    echo "node ${params[$n]} is down ( "$msg" )"
+    fi
+if [ "$?" > 500 ]; then
+    echo "node ${params[$n]} is on ( "$ssg" )"
+    else
+    echo "node ${params[$n]} is off ( "$ssg" )"
+    fi
+
+let $((n+=1))
+
+done

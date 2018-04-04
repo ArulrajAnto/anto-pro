@@ -1,0 +1,13 @@
+1041  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec"
+ 1042  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" |grep &2
+ 1043  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d "%" -f1
+ 1044  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 6 | cut -d "%" -f1
+ 1045  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 5 | cut -d "%" -f1
+ 1046  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 8 | cut -d "%" -f1
+ 1047  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 7 | cut -d "%" -f1
+ 1048  rsync -avzu  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1
+ 1049  rsync -Pv  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1
+
+
+
+rsync -Pv  test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 |  cut -d "%" -f1

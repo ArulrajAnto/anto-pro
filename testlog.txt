@@ -1,0 +1,108 @@
+ 721  ping -c10 10.2.255.254| grep 'loss' | awk -F',' '{ print $2}'
+  722  ping -c10 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}'
+  723  ping -c10 10.2.255.254| grep 'loss' awk -F '/' 'END {print $5}'
+  724  ping -c10 10.2.255.254| grep 'loss' awk -F '/'  '{print $5}'
+  725  ping -c10 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}' | sed '$!d;s|.*/\([0-9.]*\)/.*|\1|'
+  726  ping -c10 10.2.255.254| awk -F',' '{ print $3}' | sed '$!d;s|.*/\([0-9.]*\)/.*|\1|'
+  727  ping -c10 10.2.255.254 | grep 'bytes from' | awk '{ print $4 }' | sort | uniq
+  728  ping -c10 10.2.255.254 | grep 'bytes from' | awk '{ print $3 }' | sort | uniq
+  729  ping -c10 10.2.255.254 | grep 'bytes' | awk '{ print $3 }' | sort | uniq
+  730  ping -c10 10.2.255.254 | grep 'loss' | awk '{ print $3 }' | sort | uniq
+  731  ping -c10 10.2.255.254 | grep 'packet loss' | awk '{ print $3 }' | sort | uniq
+  732  ping -c10 10.2.255.254 | grep 'packet loss'
+  733  ping -c10 10.2.255.254 | grep 'time' | awk '{ print $4 }' | sort | uniq
+  734  ping -c10 10.2.255.254 | grep 'packet loss' | awk '{ print $4 }' | sort | uniq
+  735  ping -c10 10.2.255.254 | awk '{ print $4 }' | sort | uniq
+  736  ping -c10 10.2.255.254 | awk '{ print $3 }' | sort | uniq
+  737  ping -c10 10.2.255.254 | grep '%' | awk '{ print $4 }' | sort | uniq
+  738  ping -c10 10.2.255.254 | grep '%' | awk '{ print $3 }' | sort | uniq
+  739  ping -c10 10.2.255.254 | awk '{ print $3 }' | sort | uniq
+  740  ping -c10 10.2.255.254 | grep '' | awk '{ print $3 }' | sort | uniq
+  741  ping -c10 10.2.255.254 | awk '{ print $3 }' | sort | uniq
+  742  ping -c10 10.2.255.254 | awk '{ print $3 }' | sort
+  743  ping -c10 10.2.255.254 | awk '{ print $3 }' | uniq
+  744  ping -c10 10.2.255.254 | grep 'packet loss' | awk '{ print $4 }' | sort | uniq
+  745  ping -c10 10.2.255.254 | grep "packet loss" | awk '{ print $4 }' | sort | uniq
+  746  ping -c10 10.2.255.254 | grep "packet loss" | awk '{ print $3 }' | sort | uniq
+  747  ping -c10 10.2.255.254 | grep "packet loss" | awk '{ print $3 }' | sort | uniq | sed -r s'/[[:space:]]+(Minimum)/\1/g'
+  748  ping -c10 10.2.255.254 | grep "packet loss" | awk '{ print $3 }' | sort | sed -r s'/[[:space:]]+(Minimum)/\1/g'
+  749  ping -c10 10.2.255.254 | grep '0' | awk '{ print $3 }' | sort | uniq
+  750  ping -q -n -c 10 192.168.0.2 | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1
+  751  ping -q -n -c 10 10.2.255.254 | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1
+  752  ping -q -n -c 10 google.co.in | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1
+  753  ping -q -n -c 50 10.2.10.14 | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1
+  754  ping -q -n -c 10 10.2.255.254 | /bin/grep "packet loss" | /usr/bin/cut -d " " -f 6 | /usr/bin/cut -d "%" -f1
+  755  ping -q -n -c 5 10.2.10.14
+  756  ping -q -n -c 50 10.2.10.14 | grep "time" | cut -d " " -f 6 | cut -d "%" -f1
+  757  ping -q -n -c 5 10.2.10.14 | grep "time" | cut -d " " -f 6 | cut -d "%" -f1
+  758  ping -q -n -c 5 10.2.10.14 | grep "time" | cut -d " " -f 7 | cut -d "%" -f1
+  759  ping -q -n -c 5 10.2.10.14 | grep "time" | cut -d " " -f 11 | cut -d "%" -f1
+  760  ping -q -n -c 5 10.2.10.14 | grep "time" | cut -d " " -f 10 | cut -d "%" -f1
+  761  ping -q -n -c 5 10.2.10.14 | grep "time" | cut -d " " -f 10 | cut -d "%" -f2
+  762  ping -q -n -c 5 10.2.10.14 | grep "time" | cut -d " " -f 10 | cut -d "%" -f1
+
+
+
+  656  ping -c10 10.2.255.254| awk -F',' '{ print $3}'
+  657  ping -c10 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}'| awk -F',' '{ print $4}'
+  658  ping -c10 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}'
+  659  ping -c10 10.2.255.254| grep 'loss' | awk -F',' '{ print $4}'
+  660  ping -c10 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}'|awk -F',' '{ print $4}'
+  661  ping -c10 10.2.255.254| grep 'loss' | grep 'time' | awk -F',' '{ print $3}'|awk -F',' '{ print $4}'
+  662  ping -c10 10.2.255.254| awk -F',' '{ print $3}'|awk -F',' '{ print $4}'
+  663  ping -c10 10.2.255.254| grep 'loss' | grep 'time' |awk -F',' '{ print $4}'
+  664  ping -c10 10.2.255.254 | grep 'received' | awk -F',' '{ print $2}' | awk '{ print $1}'
+  665  ping -c10 10.2.255.254 | grep 'received' | awk -F',' '{ print $2}' | awk '{ print $3}'
+  666  ping -c10 10.2.255.254 | grep 'received' | awk -F',' '{ print $2}' | awk '{ print $4}'
+  667  ping -c10 10.2.255.254 | grep 'received' | awk -F',' '{ print $3}' | awk '{ print $4}'
+  668  ping -c10 10.2.255.254 | grep 'loss' | awk -F',' '{ print $3}' | awk '{ print $4}'
+  669  ping -c10 10.2.255.254 | grep 'loss' | awk -F',' '{ print $3}'
+  670  ping -c10 10.2.255.254 | grep 'loss' | awk -F',' '{ print $3}'| awk -F',' '{ print $2}'
+  671  ping -c10 10.2.255.254 | grep 'received' | awk -F',' '{ print $3}' | awk '{ print $4}'
+  672  ping -c10 10.2.255.254 | grep 'received' | awk -F',' '{ print $4}'
+
+  649  ping -c10 10.2.255.254
+  650  vim new_2
+  651  ping -c10 10.2.255.254 | awk -F',' '{ print $3}'
+  652  vim new_2
+  653  ping -c10 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}'
+
+
+ 600  ping -c20 10.2.255.254 | tail -1| awk '{print $4}' | cut -d '/' -f 2
+  601  ping -c20 10.2.255.254 | tail -1| awk '{print $3}' | cut -d '/' -f 2
+  602  ping -c20 10.2.255.254 | tail -1| awk '{print $3}' | cut -d '/' -f
+  603  ping -c20 10.2.255.254 | tail -1| awk '{print $3}' | cut -d '/'  2
+  604  ping -c20 10.2.255.254  | sed '$!d;s|.*/\([0-9.]*\)/.*|\1|
+  605  ping -c20 10.2.255.254  | sed '$!d;s|.*/\([0-9.]*\)/.*|\1|'
+  606  ping -c30 10.2.255.254| awk -F',' '{ print $3}'
+  607  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}'
+  608  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}' | sed '$!d;s|.*/\([0-9.]*\)/.*|\1|'
+  609  ping -c30 10.2.255.254| grep 'loss' | sed '$!d;s|.*/\([0-9.]*\)/.*|\1|'
+  610  ping -c30 10.2.255.254| sed '$!d;s|.*/\([0-9.]*\)/.*|\1|'
+  611  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}' | sort | uniq
+  612  ping -c30 10.2.255.254| grep 'loss'
+  613  ping -c30 10.2.255.254| grep Minimum | sed -r 's/(Average = [[:digit:]]+ms)/\1\n/g' | sed -r s'/[[:space:]]+(Minimum)/\1/g' | while read file; do echo Server "$N": "$file"; N=$((N+1)); ;
+  614  ping -c30 10.2.255.254| grep Minimum | sed -r 's/(Average = [[:digit:]]+ms)/\1\n/g' | sed -r s'/[[:space:]]+(Minimum)/\1/g' | while read file; do echo Server "$N": "$file"; N=$((N+1));
+  615  ping -c30 10.2.255.254| grep Minimum | sed -r 's/(Average = [[:digit:]]+ms)/\1\n/g' | sed -r s'/[[:space:]]+(Minimum)/\1/g'
+  616  ping -c30 10.2.255.254 | grep icmp* | wc -l
+  617  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}' | sed s/^\ \ \ \ //
+  618  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}'
+  619  ping -c30 10.2.255.254| awk -F',' '{ print $3}'
+  620  ping -c30 10.2.255.254| grep 'loss' | sed s/^\ \ \ \ //
+
+
+
+ 573  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $2}'
+  574  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}'
+  575  ping -c30 10.2.255.254| awk -F',' '{ print $1}'
+  576  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $1}'
+  577  ping -c30 10.2.255.254| grep 'loss' | grep 'received'
+  578  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $1}'
+  579  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $2}'
+  580  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $3}'
+  581  ping -c30 10.2.255.254| grep 'loss' | awk -F',' '{ print $4}'
+  582  ping -c10 google.com| grep 'loss' | awk -F',' '{ print $4}'
+  583  ping -c10 google.com| grep 'loss' | awk -F',' '{ print $2}'
+  584  ping -c10 google.com| grep 'loss' | awk -F',' '{ print $3}'
+
+

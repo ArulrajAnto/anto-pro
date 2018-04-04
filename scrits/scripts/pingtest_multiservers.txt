@@ -1,0 +1,10 @@
+#!/bin/bash
+IP=( "peregrine.gai.net" "alps.gai.net" "swift.gai.net" "don.gai.net"  )
+COUNT=30
+for myHost in "${IP[@]}"
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+  ssg=$(ping -q -n -c $COUNT $myHost | tail -1| awk '{print $4}' | cut -d '/' -f 2)
+echo "($myHost) packet loss $msg AVG time $ssg"
+
+done

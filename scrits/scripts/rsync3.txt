@@ -1,0 +1,13 @@
+[root@gai-1534 Desktop]# rsync -Pav test.tar.gz root@10.1.10.154:/tmp | grep -E '^/?([^/]+/?){0,2}$'
+sending incremental file list
+test.tar.gz
+
+sent 113947558 bytes  received 31 bytes  1156828.31 bytes/sec
+total size is 113933574  speedup is 1.00
+
+
+
+rsync -Pav test.tar.gz root@10.1.10.154:/tmp | sed -n 's@^\(\([^/][^/]*/\)\{0,2\}\).*@\1@p' | uniq
+
+
+rsync -Pav test.tar.gz root@10.1.10.154:/tmp | sed -n 's@^\(\([^/][^/]*/\)\{0,2\}\).*@\1@p' | uniq | awk '{print $4}'

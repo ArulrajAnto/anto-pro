@@ -1,0 +1,71 @@
+rsync -azP source destination
+sending incremental file list
+
+sent 818 bytes received 12 bytes 1660.00 bytes/sec
+total size is 0 speedup is 0.00
+
+
+$ rsync -zvr /var/opt/installation/inventory/ /root/temp
+building file list ... done
+sva.xml
+svB.xml
+.
+sent 26385 bytes  received 1098 bytes  54966.00 bytes/sec
+total size is 44867  speedup is 1.63
+
+$ rsync -azv /var/opt/installation/inventory/ /root/temp/
+building file list ... done
+./
+sva.xml
+svB.xml
+.
+sent 26499 bytes  received 1104 bytes  55206.00 bytes/sec
+total size is 44867  speedup is 1.63
+
+$ rsync -v /var/lib/rpm/Pubkeys /root/temp/
+Pubkeys
+
+sent 42 bytes  received 12380 bytes  3549.14 bytes/sec
+total size is 12288  speedup is 0.99
+
+
+
+$ rsync -avz /root/temp/ thegeekstuff@192.168.200.10:/home/thegeekstuff/temp/
+Password:
+building file list ... done
+./
+rpm/
+rpm/Basenames
+rpm/Conflictname
+
+sent 15810261 bytes  received 412 bytes  2432411.23 bytes/sec
+total size is 45305958  speedup is 2.87
+
+$ rsync -avzu thegeekstuff@192.168.200.10:/var/lib/rpm /root/temp
+Password:
+receiving file list ... done
+rpm/
+
+sent 122 bytes  received 505 bytes  114.00 bytes/sec
+total size is 45305958  speedup is 72258.31
+
+
+
+$ rsync -avz --delete thegeekstuff@192.168.200.10:/var/lib/rpm/ .
+Password:
+receiving file list ... done
+deleting new-file.txt
+./
+
+sent 26 bytes  received 390 bytes  48.94 bytes/sec
+total size is 45305958  speedup is 108908.55
+
+
+$ rsync -avz -e ssh thegeekstuff@192.168.200.10:/var/lib/rpm /root/temp
+Password:
+receiving file list ... done
+rpm/
+rpm/Basenames
+
+sent 406 bytes  received 15810230 bytes  2432405.54 bytes/sec
+total size is 45305958  speedup is 2.87

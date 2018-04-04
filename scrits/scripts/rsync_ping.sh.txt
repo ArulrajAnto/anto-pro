@@ -1,0 +1,34 @@
+#!/bin/bash
+IP=( "10.1.10.44" "10.1.10.34" "10.1.10.118" "10.1.10.154"  )
+COUNT=30
+for myHost in "${IP[@]}"
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+  ssg=$(ping -q -n -c $COUNT $myHost | tail -1| awk '{print $4}' | cut -d '/' -f 2)
+  rsg=$(rsync -Pv /home/arulraj.anto/test.tar.gz root@$myHost:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1)
+  echo "($myHost) packet loss $msg AVG time $ssg"
+  echo "(rsync value for $myHost is $rsg bytes/sec)"
+
+done
+
+
+
+
+10.1.10.94   10.1.10.54
+
+* * * * * rm -rf /tmp/test.tar.gz
+
+
+
+#!/bin/bash
+IP=( "10.1.10.44" "10.1.10.34" "10.1.10.94" "10.1.10.54"  )
+COUNT=30
+for myHost in "${IP[@]}"
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+  ssg=$(ping -q -n -c $COUNT $myHost | tail -1| awk '{print $4}' | cut -d '/' -f 2)
+  rsg=$(rsync -Pv /home/arulraj.anto/test.tar.gz root@$myHost:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1)
+  echo "($myHost) packet loss $msg AVG time $ssg"
+  echo "(rsync value for $myHost is $rsg bytes/sec)"
+
+done

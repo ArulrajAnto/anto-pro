@@ -1,0 +1,41 @@
+#!/bin/bash
+CD=("cd /home/arulraj.anto/test.tar.gz")
+do 
+msg=$(rsync -Pv $CD root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1)
+echo "Please find the list $msg"
+done
+
+
+#!/bin/bash
+IP=( "peregrine.gai.net" "alps.gai.net" "swift.gai.net" "don.gai.net"  )
+COUNT=30
+#CD=("cd /home/arulraj.anto/test.tar.gz")
+for myHost in "${IP[@]}"
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+  ssg=$(ping -q -n -c $COUNT $myHost | tail -1| awk '{print $4}' | cut -d '/' -f 2)
+  #rsg=$(rsync -Pv $CD root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1)
+echo "($myHost) packet loss $msg AVG time $ssg"
+#echo "(rsync value is $rsg bytes/sec)"
+rsg=$(rsync -Pv /home/arulraj.anto/test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1)
+echo "(rsync value is $rsg bytes/sec)"
+done
+
+
+
+
+
+#!/bin/bash
+IP=( "peregrine.gai.net" "alps.gai.net" "swift.gai.net" "don.gai.net"  )
+COUNT=30
+for myHost in "${IP[@]}"
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+  ssg=$(ping -q -n -c $COUNT $myHost | tail -1| awk '{print $4}' | cut -d '/' -f 2)
+echo "($myHost) packet loss $msg AVG time $ssg"
+
+rsg=$(rsync -Pv /home/arulraj.anto/test.tar.gz root@10.1.10.118:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1)
+echo "(rsync value is $rsg bytes/sec)"
+
+done
+

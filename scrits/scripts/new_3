@@ -1,0 +1,11 @@
+#!/bin/bash
+HOSTS="10.2.255.254"
+COUNT=20
+for myHost in $HOSTS
+do
+  count=$(ping -c $COUNT $myHost | grep 'received' | awk -F',' '{ print $3 }' | awk '{ print $1 }')
+  if [ $count -eq 0 ]; then
+    # 100% failed 
+    echo "Host : $myHost is down (ping failed) at $(date)"
+  fi
+done

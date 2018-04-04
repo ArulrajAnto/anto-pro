@@ -1,0 +1,31 @@
+#!/bin/bash
+IP=( "peregrine.gai.net" "alps.gai.net" "swift.gai.net" "don.gai.net" "10.1.2.1" )
+COUNT=30
+for myHost in "${IP[@]}"
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+  ssg=$(ping -q -n -c $COUNT $myHost | tail -1| awk '{print $4}' | cut -d '/' -f 2)
+echo "($myHost) packet loss $msg AVG time $ssg"  
+
+done
+
+
+
+[root@sys-1496 scripts]# ./test2
+(peregrine.gai.net) packet loss 0 AVG time 0.153
+(alps.gai.net) packet loss 0 AVG time 0.183
+(swift.gai.net) packet loss 0 AVG time 65.233
+(don.gai.net) packet loss 0 AVG time 0.263
+[root@sys-1496 scripts]#
+
+
+#!/bin/bash
+IP=( "peregrine.gai.net" "alps.gai.net" "swift.gai.net" "don.gai.net"  )
+COUNT=30
+for myHost in "${IP[@]}"
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+  ssg=$(ping -q -n -c $COUNT $myHost | tail -1| awk '{print $4}' | cut -d '/' -f 2)
+echo "($myHost) packet loss $msg AVG time $ssg"
+
+done

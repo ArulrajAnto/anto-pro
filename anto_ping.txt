@@ -1,0 +1,7 @@
+ping 10.2.10.14 -n 10  >> d:anto111.txt
+ping -t 10.2.10.14 | find Lost >> d:anto211.txt
+ping -t 10.2.10.14 | find /v "Reply from 10.2.10.14" >> d:anto211.txt
+
+
+
+ping -c10 10.2.10.14 |  grep 'time ' >> /home/admin/anto211.txt

@@ -1,0 +1,32 @@
+[root@gai-1534 scripts]# ./pingrsync1
+(10.1.10.44) packet loss 0 AVG time 0.351
+(rsync value for 10.1.10.44 is 45579034.00 bytes/sec)
+(10.1.10.34) packet loss 0 AVG time 0.256
+(rsync value for 10.1.10.34 is 45579034.00 bytes/sec)
+(10.1.10.118) packet loss 0 AVG time 0.279
+(rsync value for 10.1.10.118 is 75965056.67 bytes/sec)
+(10.1.10.154) packet loss 0 AVG time 0.255
+(rsync value for 10.1.10.154 is 45579034.00 bytes/sec)
+[root@gai-1534 scripts]# ./pingrsync1
+(10.1.10.44) packet loss 0 AVG time 0.356
+(rsync value for 10.1.10.44 is 45579034.00 bytes/sec)
+(10.1.10.34) packet loss 0 AVG time 0.240
+(rsync value for 10.1.10.34 is 32556452.86 bytes/sec)
+(10.1.10.118) packet loss 0 AVG time 0.286
+(rsync value for 10.1.10.118 is 75965056.67 bytes/sec)
+(10.1.10.154) packet loss 0 AVG time 0.265
+(rsync value for 10.1.10.154 is 45579034.00 bytes/sec)
+[root@gai-1534 scripts]# cat pingrsync1
+#!/bin/bash
+IP=( "10.1.10.44" "10.1.10.34" "10.1.10.118" "10.1.10.154"  )
+COUNT=30
+for myHost in "${IP[@]}"
+do
+  msg=$(ping -q -n -c $COUNT $myHost | grep "packet loss" | cut -d " " -f 6 | cut -d "%" -f1)
+  ssg=$(ping -q -n -c $COUNT $myHost | tail -1| awk '{print $4}' | cut -d '/' -f 2)
+  rsg=$(rsync -Pv /home/arulraj.anto/test.tar.gz root@$myHost:/tmp | grep "bytes/sec" | cut -d " " -f 9 | cut -d "%" -f1)
+  echo "($myHost) packet loss $msg AVG time $ssg"
+  echo "(rsync value for $myHost is $rsg bytes/sec)"
+
+done
+[root@gai-1534 scripts]#
